@@ -23,6 +23,7 @@ module.exports = {
     },
     numeroAutos: {
       type: 'number',
+      isInteger: true,
       columnType: 'int',
       defaultsTo: 0
     },
@@ -34,12 +35,9 @@ module.exports = {
       model: 'usuario',
       required: true
     },
-    // auto:{
-    //   collection: 'Auto',
-    //   via: 'idConductor'
-    // },
-
+    auto:{
+      collection: 'auto',
+      via: 'conductor'
+    },
   },
-
 };
-
