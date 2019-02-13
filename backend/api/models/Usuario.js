@@ -35,9 +35,9 @@ module.exports = {
       via: 'usuario',
       through: 'rolesporusuario'
     },
-    paciente:{
-      collection: 'Paciente',
-      via: 'idUsuario'
+    conductores:{
+      collection: 'conductor',
+      via: 'usuario'
     },
   },
 
