@@ -18,6 +18,10 @@ module.exports = {
     factura_cabecera:{
       model: 'facturacabecera',
       required: true
+    },
+    evento_por_auto:{
+      model: 'eventoporauto',
+      required: true
     }
   }
 };
