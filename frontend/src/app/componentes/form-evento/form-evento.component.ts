@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Evento} from "../../Interfaces/evento";
+import {Evento} from "../../interfaces/evento";
 
 @Component({
   selector: 'app-form-evento',
   templateUrl: './form-evento.component.html',
-  styleUrls: ['./form-evento.component.scss']
+  styleUrls: ['./form-evento.component.css']
 })
 export class FormEventoComponent implements OnInit {
 

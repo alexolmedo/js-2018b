@@ -1,220 +1,123 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from "./modulos/modulo-logeo/login/login.component";
-import {RegistarseComponent} from "./modulos/modulo-logeo/registarse/registarse.component";
-import {AdministradorUsuariosComponent} from "./modulos/modulo-administrador/administrador-usuarios/administrador-usuarios.component";
-import {AdministradorActualizarUsuarioComponent} from "./modulos/modulo-administrador/administrador-actualizar-usuario/administrador-actualizar-usuario.component";
-import {AdministradorVerInformacionUsuarioComponent} from "./modulos/modulo-administrador/administrador-ver-informacion-usuario/administrador-ver-informacion-usuario.component";
-import {IsAdministradorServiceService} from "./guards/is-administrador-service.service";
-import {AdministradorMainComponent} from "./modulos/modulo-administrador/administrador-main/administrador-main.component";
-import {UsuarioMainComponent} from "./modulos/modulo-usuario/usuario-main/usuario-main.component";
-import {NoencontradoMainComponent} from "./modulos/modulo-404/noencontrado-main/noencontrado-main.component";
-import {IsUsuarioServiceService} from "./guards/is-usuario-service.service";
-import {EventoVisualizarComponent} from "./modulos/modulo-todos/evento-visualizar/evento-visualizar.component";
-import {EventoVerMedicamentoComponent} from "./modulos/modulo-todos/evento-ver-medicamento/evento-ver-medicamento.component";
-import {PacienteCrearComponent} from "./modulos/modulo-usuario/modulo-paciente/paciente-crear/paciente-crear.component";
-import {PacienteVisualizarComponent} from "./modulos/modulo-usuario/modulo-paciente/paciente-visualizar/paciente-visualizar.component";
-import {PacienteActualizarComponent} from "./modulos/modulo-usuario/modulo-paciente/paciente-actualizar/paciente-actualizar.component";
-import {MedicamentoVisualizarComponent} from "./modulos/modulo-usuario/modulo-medicamento/medicamento-visualizar/medicamento-visualizar.component";
-import {MedicamentoCrearComponent} from "./modulos/modulo-usuario/modulo-medicamento/medicamento-crear/medicamento-crear.component";
-import {MedicamentoActualizarComponent} from "./modulos/modulo-usuario/modulo-medicamento/medicamento-actualizar/medicamento-actualizar.component";
-import {EventoCrearComponent} from "./modulos/modulo-usuario/modulo-evento/evento-crear/evento-crear.component";
-import {EventoActualizarComponent} from "./modulos/modulo-usuario/modulo-evento/evento-actualizar/evento-actualizar.component";
-import {EventoVerComponent} from "./modulos/modulo-usuario/modulo-evento/evento-ver/evento-ver.component";
-import {VisitanteMainComponent} from "./modulos/modulo-visitante/visitante-main/visitante-main.component";
-import {EventoMedicamentoMainComponent} from "./modulos/modulo-evento-medicamento/evento-medicamento-main/evento-medicamento-main.component";
-import {EventoMedicaVisualizarComponent} from "./modulos/modulo-evento-medicamento/evento-medica-visualizar/evento-medica-visualizar.component";
-import {EventoMedicaAgregarComponent} from "./modulos/modulo-evento-medicamento/evento-medica-agregar/evento-medica-agregar.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {RutaLoginComponent} from './rutas/ruta-login/ruta-login.component';
+import {RutaGestionUsuariosComponent} from './rutas/ruta-gestion-usuarios/ruta-gestion-usuarios.component';
+import {RutaMenuComponent} from "./rutas/ruta-menu/ruta-menu.component";
+import {RutaRegistroComponent} from "./rutas/ruta-registro/ruta-registro.component";
+import {RutaActualizarUsuarioComponent} from "./rutas/ruta-actualizar-usuario/ruta-actualizar-usuario.component";
+import {UsuarioMainComponent} from "./modulos/usuario-main/usuario-main.component";
+import {ConductorVisualizarComponent} from "./modulos/modulo-conductor/conductor-visualizar/conductor-visualizar.component";
+import {ConductorCrearComponent} from "./modulos/modulo-conductor/conductor-crear/conductor-crear.component";
+import {ConductorActualizarComponent} from "./modulos/modulo-conductor/conductor-actualizar/conductor-actualizar.component";
+import {AutoVisualizarComponent} from "./modulos/modulo-auto/auto-visualizar/auto-visualizar.component";
+import {AutoCrearComponent} from "./modulos/modulo-auto/auto-crear/auto-crear.component";
+import {AutoActualizarComponent} from "./modulos/modulo-auto/auto-actualizar/auto-actualizar.component";
+import {EventoVerComponent} from "./modulos/modulo-evento/evento-ver/evento-ver.component";
+import {EventoCrearComponent} from "./modulos/modulo-evento/evento-crear/evento-crear.component";
+import {EventoActualizarComponent} from "./modulos/modulo-evento/evento-actualizar/evento-actualizar.component";
+import {EventoVisualizarComponent} from "./modulos/modulo-evento/evento-visualizar/evento-visualizar.component";
+import {EventoVerAutoComponent} from "./modulos/modulo-evento/evento-ver-auto/evento-ver-auto.component";
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login'
-  },
-  {
     path: 'login',
-    component: LoginComponent
+    component: RutaLoginComponent
   },
   {
-    path: 'registrar',
-    component: RegistarseComponent
+    path: 'registro',
+    component: RutaRegistroComponent
   },
   {
-    path: 'Administrador',
-    component: AdministradorMainComponent,
-    children:[
+    path: 'menu',
+    component: RutaMenuComponent,
+    children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'Usuarios'
+        path: 'gestion-usuarios',
+        component: RutaGestionUsuariosComponent
       },
       {
-        path: 'Usuarios',
-        component: AdministradorUsuariosComponent,
-        canActivate: [
-          IsAdministradorServiceService
-        ]
+        path: 'actualizar-usuario/:idUsuario',
+        component: RutaActualizarUsuarioComponent,
       },
-      {
-        path: 'actualizarUsuario/:idUsuario',
-        component: AdministradorActualizarUsuarioComponent,
-        canActivate: [
-          IsAdministradorServiceService
-        ]
-      },
-      {
-        path: 'VerInformacionUsuario/:idUsuario',
-        component: AdministradorVerInformacionUsuarioComponent,
-        canActivate: [
-          IsAdministradorServiceService
-        ]
-      },
-      {
-        path: 'Eventos',
-        component: EventoVisualizarComponent,
-        children: [
-          {
-            path: 'Medicamentos/:idEvento',
-            component: EventoVerMedicamentoComponent
-          }
-        ]
-      }
     ]
   },
   {
-    path: 'Usuario',
+    path: 'usuario',
     component: UsuarioMainComponent,
     children:[
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'gestionPaciente',
+        redirectTo: 'gestionConductor',
       },
       {
-        path: 'gestionPaciente',
-        component: PacienteVisualizarComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
+        path: 'gestionConductor',
+        component: ConductorVisualizarComponent,
+
       },
       {
-        path: 'crearPaciente',
-        component: PacienteCrearComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
+        path: 'crearConductor',
+        component: ConductorCrearComponent,
       },
       {
-        path: 'actualizarPaciente/:idPaciente',
-        component: PacienteActualizarComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
+        path: 'actualizarConductor/:idConductor',
+        component: ConductorActualizarComponent,
       },
       {
-        path: 'gestionMedico',
-        component: MedicamentoVisualizarComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
+        path: 'gestionAuto',
+        component: AutoVisualizarComponent,
       },
       {
-        path: 'crearMedicamento',
-        component: MedicamentoCrearComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
+        path: 'crearAuto',
+        component: AutoCrearComponent,
       },
       {
-        path: 'actualizarMedicamento/:idMedico',
-        component: MedicamentoActualizarComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
+        path: 'actualizarAuto/:idAuto',
+        component: AutoActualizarComponent,
       },
       {
         path: 'gestionEvento',
         component: EventoVerComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
-      },
-      {
-        path: 'actualizarEvento/:idEvento',
-        component:EventoActualizarComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
       },
       {
         path: 'crearEvento',
         component: EventoCrearComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ]
       },
       {
-        path: 'Eventos',
+        path: 'actualizarEvento/:idEvento',
+        component:EventoActualizarComponent,
+      },
+      {
+        path: 'eventos',
         component: EventoVisualizarComponent,
         children: [
           {
-            path: 'Medicamentos/:idEvento',
-            component: EventoVerMedicamentoComponent
+            path: 'autos/:idEvento',
+            component: EventoVerAutoComponent
           }
         ]
-      },
-      {
-        path: 'eventMedica',
-        component: EventoMedicamentoMainComponent,
-        canActivate: [
-          IsUsuarioServiceService
-        ],
-        children:[
-          {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'EventoMedicamento'
-          },
-          {
-            path: 'EventoMedicamento',
-            component: EventoMedicaVisualizarComponent
-          },
-          {
-            path: 'AgregarEventoMedicamento',
-            component: EventoMedicaAgregarComponent
-          }
-        ]
-      }
-    ]
+      }]
+    //   {
+    //     path: 'eventAuto',
+    //     component: EventoAutoMainComponent,
+    //     children:[
+    //       {
+    //         path: '',
+    //         pathMatch: 'full',
+    //         redirectTo: 'EventoAuto'
+    //       },
+    //       {
+    //         path: 'EventoAuto',
+    //         component: EventoAutoVisualizarComponent
+    //       },
+    //       {
+    //         path: 'AgregarEventoAutoo',
+    //         component: EventoAutoAgregarComponent
+    //       }
+    //     ]
+    //   }
+    // ]
   },
-  {
-    path: 'Visitante',
-    component: VisitanteMainComponent,
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'Eventos'
-      },
-      {
-        path: 'Eventos',
-        component: EventoVisualizarComponent,
-        children: [
-          {
-            path: 'Medicamentos/:idEvento',
-            component: EventoVerMedicamentoComponent
-          }
-        ]
-      }
-    ]
-  },
-  {
-    path: '**',
-    component: NoencontradoMainComponent,
-
-  }
-
 ];
 
 @NgModule({

@@ -5,23 +5,18 @@
 
     <div>
       <input id="nombreEvento" type="text" required name="nombreEvento"
-             placeholder="nombre del evento" maxlength="30"
-             [(ngModel)]="evento.nombre" #inputNombre="ngModel">
+             placeholder="Nombre"
+             [(ngModel)]="evento.nombre">
+    </div>
+    <div>
+      <input id="lugar" type="text" required name="lugar"
+             placeholder="Lugar"
+             [(ngModel)]="evento.lugar">
     </div>
     <div>
       <input id="fecha" type="date" required name="fecha"
-             placeholder="fecha del evento"  maxlength="40"
-             [(ngModel)]="evento.fecha" #inputFecha="ngModel">
-    </div>
-    <div>
-      <input id="latitud" type="number" required name="latitud"
-             placeholder="Latitud del evento" maxlength="12"
-             [(ngModel)]="evento.latitud" #inputLatitud="ngModel">
-    </div>
-    <div>
-      <input id="longitud" type="number" required name="longitud"
-             placeholder="Longitud del evento" maxlength="12"
-             [(ngModel)]="evento.longitud" #inputLongitud="ngModel">
+             placeholder="fecha del evento"
+             [(ngModel)]="evento.fecha">
     </div>
     <div>
       <button [disabled]="formularioEvento.invalid">

@@ -9,13 +9,13 @@ module.exports = {
   login: async (req, res) => {
     const parametros = req.allParams();
     var usuarioLogeado = await Usuario.find({
-      nombre: parametros.nombre,
+      correo: parametros.correo,
       password: parametros.password,
-    });
-    if(usuarioLogeado){
-      return res.ok(usuarioLogeado);
+    }).populate('roles');
+    if(usuarioLogeado.length!==0){
+      return res.ok(usuarioLogeado[0]);
     }else{
-      return res.badRequest({mensaje:'Usuario Invalido'});
+      return res.badRequest({mensaje:'Correo o contraseña inválidos'});
     }
   }
 };
