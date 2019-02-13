@@ -6,21 +6,15 @@
  */
 
 module.exports = {
-
-  tableName: 'db_rol',
   attributes: {
     nombre: {
-      type: 'String',
+      type: 'string',
       unique: true,
-      isIn: [
-        'Administrador',
-        'Usuario'
-      ],
-      defaultsTo: 'Usuario'
     },
-    rolesUsuario:{
-      collection: 'RolesPorUsuario',
-      via: 'idRol'
+    usuarios:{
+      collection: 'usuario',
+      via: 'rol',
+      through: 'rolesporusuario'
     },
   },
 

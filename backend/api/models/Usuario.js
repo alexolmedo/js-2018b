@@ -6,31 +6,34 @@
  */
 
 module.exports = {
-
-  tableName: 'db_usuario',
   attributes: {
     nombre: {
-      type: 'String',
-      unique: true,
-      required: true
+      type: 'string',
+      required: true,
+      regex: /^[a-zA-Z\s]*$/i
     },
     correo:{
-      type: 'String',
+      type: 'string',
       required: true,
+      unique: true,
       isEmail: true
     },
     password: {
-      type: 'String',
-      required: true
+      type: 'string',
+      required: true,
+      regex: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/i,
+      minLength: 8,
+      maxLength: 16
     },
-    fechaNacimiento:{
-      type: 'String',
+    fecha_nacimiento:{
+      type: 'string',
       required: true,
       columnName: 'fecha_nacimiento'
     },
-    rolesUsuario:{
-      collection: 'RolesPorUsuario',
-      via: 'idUsuario'
+    roles:{
+      collection: 'rol',
+      via: 'usuario',
+      through: 'rolesporusuario'
     },
     paciente:{
       collection: 'Paciente',

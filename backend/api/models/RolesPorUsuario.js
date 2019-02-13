@@ -6,14 +6,14 @@
  */
 
 module.exports = {
-
-  tableName: 'db_rol_usuario',
   attributes: {
-    idRol:{
-      model: 'Rol'
+    usuario:{
+      model: 'usuario',
+      required: true
     },
-    idUsuario: {
-      model: 'Usuario'
+    rol: {
+      model: 'rol',
+      required: true
     }
   },
 
