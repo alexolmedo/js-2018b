@@ -1,14 +1,5 @@
-/**
- * Auto.js
- *
- * @description :: A model definition represents a database table/collection.
- * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
- */
-
 module.exports = {
-
   attributes: {
-
     chasis:{
       type: 'number',
       isInteger: true,
@@ -39,9 +30,10 @@ module.exports = {
       model: 'conductor',
       required: true
     },
-    // eventoAuto:{
-    //   collection: 'EventoPorAuto',
-    //   via: 'idAuto'
-    // },
+    eventos:{
+      collection: 'evento',
+      via: 'auto_id',
+      through: 'eventoporauto'
+    },
   },
 };

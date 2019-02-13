@@ -1,35 +1,26 @@
-/**
- * Evento.js
- *
- * @description :: A model definition represents a database table/collection.
- * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
- */
-
 module.exports = {
-
-  tableName: 'db_evento',
   attributes: {
     nombre:{
-      type: 'String',
+      type: 'string',
       required: true,
       unique: true
     },
     fecha:{
-      type: 'String'
+      type: 'string',
+      required: true
     },
     latitud: {
       type: 'number',
-      columnType: 'float'
+      required: true
     },
     longitud:{
       type: 'number',
-      columnType: 'float'
+      required: true
     },
-    eventoMedicamento:{
-      collection: 'EventoPorMedicamento',
-      via: 'idEvento'
+    autos:{
+      collection: 'auto',
+      via: 'evento_id',
+      through: 'eventoporauto'
     },
   },
-
 };
-

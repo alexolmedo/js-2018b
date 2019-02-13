@@ -1,11 +1,11 @@
 module.exports = {
   attributes: {
-    usuario_id:{
-      model: 'usuario',
+    auto_id:{
+      model: 'auto',
       required: true
     },
-    rol_id: {
-      model: 'rol',
+    evento_id:{
+      model: 'evento',
       required: true
     }
   },

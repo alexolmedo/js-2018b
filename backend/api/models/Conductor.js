@@ -1,14 +1,5 @@
-/**
- * Conductor.js
- *
- * @description :: A model definition represents a database table/collection.
- * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
- */
-
 module.exports = {
-
   attributes: {
-
     nombres: {
       type: 'String',
       required: true,
@@ -24,7 +15,6 @@ module.exports = {
     numeroAutos: {
       type: 'number',
       isInteger: true,
-      columnType: 'int',
       defaultsTo: 0
     },
     licenciaValida: {

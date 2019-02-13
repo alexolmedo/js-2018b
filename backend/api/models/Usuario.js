@@ -1,10 +1,3 @@
-/**
- * Usuario.js
- *
- * @description :: A model definition represents a database table/collection.
- * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
- */
-
 module.exports = {
   attributes: {
     nombre: {
@@ -32,7 +25,7 @@ module.exports = {
     },
     roles:{
       collection: 'rol',
-      via: 'usuario',
+      via: 'usuario_id',
       through: 'rolesporusuario'
     },
     conductores:{
@@ -40,6 +33,4 @@ module.exports = {
       via: 'usuario'
     },
   },
-
 };
-
