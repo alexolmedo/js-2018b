@@ -25,7 +25,7 @@ module.exports = {
       model: 'usuario',
       required: true
     },
-    auto:{
+    autos:{
       collection: 'auto',
       via: 'conductor'
     },

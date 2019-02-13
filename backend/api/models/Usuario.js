@@ -21,7 +21,6 @@ module.exports = {
     fecha_nacimiento:{
       type: 'string',
       required: true,
-      columnName: 'fecha_nacimiento'
     },
     roles:{
       collection: 'rol',
@@ -31,6 +30,10 @@ module.exports = {
     conductores:{
       collection: 'conductor',
       via: 'usuario'
+    },
+    facturas:{
+      collection: 'facturacabecera',
+      via: 'cajero'
     },
   },
 };
